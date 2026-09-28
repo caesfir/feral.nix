@@ -119,7 +119,7 @@
   # Steam
     steam = {
       enable = true;
-#       package = pkgs.millennium-steam;
+      package = pkgs.millennium-steam;
       extest.enable = false;
       protontricks.enable = false;
 #       extraPackages = with pkgs; [

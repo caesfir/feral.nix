@@ -175,7 +175,7 @@
       automatic = true;
         };
     settings = {
-      substituters = [
+      trusted-substituters = [
         "https://cache.nixos.org"                   # NixPKGs
         "https://nix-community.cachix.org"          # NixCommunity
         "https://afnix-hydra.s3-bulk-web.afnix.fr"  # LixPM

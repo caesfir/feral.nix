@@ -2,9 +2,9 @@
 
 {
 
-  nixpkgs.overlays = [
-    inputs.millennium.overlays.default
-    inputs.nix-alien.overlays.default
+  nixpkgs.overlays = with inputs; [
+    millennium.overlays.default  # Steam Millennium
+    nix-alien.overlays.default   # Nix Alien
     ];
 
 }
