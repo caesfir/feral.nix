@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, ... }:
+{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, storage, ... }:
 
 {
 
@@ -41,10 +41,13 @@
       };
 
   # Nvidia
-#     nvidia-container-toolkit = {
-#       enable = true;
-#       mount-nvidia-executables = true;
-#       };
+    nvidia-container-toolkit = {
+      enable = true;
+      mount-nvidia-executables = true;
+      device-name-strategy = "index";
+      discovery-mode = "nvml";
+      };
+
     nvidia = {
       open = true;
       nvidiaPersistenced = true;
