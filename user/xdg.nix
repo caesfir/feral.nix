@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, ... }:
+{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, storage, ... }:
 
 {
 
@@ -14,10 +14,10 @@
     autostart = {
       enable = true;
       };
-    portal = {
-      enable = true;
-      xdgOpenUsePortal = true;
-      };
+#     portal = {
+#       enable = true;
+#       xdgOpenUsePortal = true;
+#       };
     mime = {
       enable = true;
       };
