@@ -1,29 +1,41 @@
-{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, ... }:
+{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, storage, ... }:
 
 {
 
   security.pam.services.plasmalogin.enableGnomeKeyring = true;
 
   programs = {
+  # NeoVim
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+      withNodeJs = true;
+      withPython3 = true;
+      defaultEditor = true;
+      };
+  # NPM
     npm = {
       enable = true;
       };
-  # FireFox
-    firefox = {
-      enable = true;
-      package = inputs.firefox-nightly.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin;
-      languagePacks = [ "en-US" ];
-      nativeMessagingHosts.packages = [ pkgs.kdePackages.plasma-browser-integration ];
-    };
+  # Nix Index
     nix-index = {
       enable = true;
-    };
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+      };
+  # Comma
+    comma = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+      };
   # Starship
     starship = {
       enable = true;
       enableZshIntegration = true;
       enableBashIntegration = true;
-    };
+      };
   # Plasma Browser Integration
     chromium = {
       enable = true;
