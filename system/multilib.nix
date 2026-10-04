@@ -1,8 +1,6 @@
-{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, ... }:
+{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, storage, ... }:
 
 {
-
-  boot.loader.grub.forcei686    = lib.mkForce false;
 
   fonts.fontconfig.cache32Bit   = lib.mkForce false;
 
