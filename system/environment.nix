@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, ... }:
+{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, storage, ... }:
 
 {
 
@@ -22,15 +22,19 @@
         zstd
         ];
         })
-    ## Tools
+    ## Core
         curl
         wget
-        efibootmgr
-        chromium
+        cachix
+    ## Container
+        distrobox
+        lilipod
     ## Extras
+        efibootmgr
         gparted
+        gnome-tweaks
+        chromium
         steamcmd
-        nix-alien
         kitty
     ## File Systems
         btrfs-progs                     # BTRFS
@@ -41,6 +45,7 @@
         mtools                          # FAT32
     ## Steamy
         jq
+        gnutar
         unzip
         libnotify
     ## MSR
