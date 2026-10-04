@@ -90,6 +90,11 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
       };
+   # Helix
+    helix = {
+      url = "github:helix-editor/helix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      };
 ### Third Party
   ## Nix Alien
     nix-alien = {
@@ -118,6 +123,18 @@
           hostname = "ZIN";
           system = "x86_64-linux";
           timezone = "Asia/Kolkata";
+          storage = {
+            uuid = {
+              root = "/dev/disk/by-uuid/22222222-7469-7469-7469-222222222222"; # UUID of Root | /
+              boot = "/dev/disk/by-uuid/3333-7469";                            # UUID of Boot | /boot
+              home = "/ZIN/Linux/Home/Nix";                                    # UUID of Home | /home
+              };
+            fs = {
+              root = "btrfs"; # File System of Root | /
+              boot = "vfat";  # File System of Boot | /boot
+              home = "none";  # File System of Home | /home
+              };
+            };
           };
         modules = [
           ./main/system.nix
