@@ -1,63 +1,49 @@
-{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, ... }:
+{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, storage, ... }:
 
 {
 
   programs = {
     fastfetch = {
-    enable = true;
-      };
-    distrobox = {
       enable = true;
-      enableSystemdUnit = true;
-      containers = {
-
-      ## Arch
-        Arch = {
-          entry = true;
-          nvidia = true;
-          init = false;
-          root = false;
-          pull = true;
-          image = "archlinux:latest";
-          home = "/home/${username}/db/home/Arch";
-          hostname = hostname;
-          volume= [ "/ZIN:/ZIN" "/I:/I" "/II:/II" "/III:/III" ];
-#          additional_flags = [ "device=nvidia.com/gpu=all" ];
-          additional_packages = [ "git" "nano" ];
-          };
-
-      # Fedora
-        Fedora = {
-          entry = true;
-          nvidia = true;
-          init = false;
-          root = false;
-          pull = true;
-          image = "fedora:rawhide";
-          home = "/home/${username}/db/home/Fedora";
-          hostname = hostname;
-          volume= [ "/ZIN:/ZIN" "/I:/I" "/II:/II" "/III:/III" ];
-#          additional_flags = [ "device=nvidia.com/gpu=all" ];
-          additional_packages = [ "git" ];
-          };
-
-      # Debian
-        Debian = {
-          entry = true;
-          nvidia = true;
-          init = false;
-          root = false;
-          pull = true;
-          image = "debian:unstable";
-          home = "/home/${username}/db/home/Debian";
-          hostname = hostname;
-          volume= [ "/ZIN:/ZIN" "/I:/I" "/II:/II" "/III:/III" ];
-#          additional_flags = [ "device=nvidia.com/gpu=all" ];
-          additional_packages = [ "git" ];
-          };
-
-        };
       };
+#     mangohud = {
+#       enable = true;
+#       };
+#     distrobox = {
+#       enable = true;
+#       enableSystemdUnit = true;
+#
+#      # Settings
+#       settings = {
+#         container_additional_volumes = "/ZIN:/ZIN /I:/I /II:/II /III:/III";
+#         container_always_pull = "1";
+#         container_generate_entry = 1;
+#         container_manager = "podman";
+#         non_interactive = "0";
+#         skip_workdir="0";
+#         };
+#
+#      # Containers
+#       containers = {
+#
+#       # Arch Linux
+#         arch = {
+#           entry = true;
+#           nvidia = true;
+#           init = false;
+#           root = false;
+#           pull = true;
+#           image = "archlinux:latest";
+#           home = "/ZIN/Linux/db/home/arch";
+#           hostname = hostname;
+#           volume= [ "/ZIN:/ZIN" "/I:/I" "/II:/II" "/III:/III" ];
+#           additional_flags = [ "--device=nvidia.com/gpu=all" ];
+#           additional_packages = [ "git" "nano" ];
+#           };
+#
+#         };
+#
+#       };
     };
 
 }
