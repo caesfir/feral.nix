@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, ... }:
+{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, storage, ... }:
 
 {
 
