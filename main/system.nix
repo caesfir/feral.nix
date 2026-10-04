@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, ... }:
+{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, storage, ... }:
 
 {
 
@@ -13,6 +13,7 @@
       ../system/environment.nix
       ../system/exclude.nix
       ../system/fileSystems.nix
+      ../system/firefox.nix
       ../system/fonts.nix
       ../system/hardware.nix
       ../system/libraries.nix
@@ -29,6 +30,7 @@
     '';
 
     appstream.enable = true;
+
   # XDG
     xdg = {
       autostart = {
@@ -49,11 +51,23 @@
     environment = {
       homeBinInPath = true;
       localBinInPath = true;
-      stub-ld.enable = true;
+      stub-ld = {
+        enable = true;
+        };
       sessionVariables = {
+       # LuaTools Moon
+        LUATOOLS_MOON_SLS_CHANNEL    = "beta";
+        LUATOOLS_MOON_PLUGIN_CHANNEL = "beta";
+        LUATOOLS_MOON_LUMEN_CHANNEL  = "beta";
        # SDL
         SDL_VIDEODRIVER = "wayland";
         SDL_AUDIODRIVER = "pipewire";
+       # Electron
+        NIXOS_OZONE_WL = "1";
+       # Container
+        DBX_CONTAINER_MANAGER = "podman";
+        LILIPOD_HOME="/ZIN/Linux/db";
+       # PATH
         PATH = [
           "/ZIN/Linux/PATH"
           "/ZIN/Linux/AppImage"
@@ -62,32 +76,31 @@
       };
 
   # Sudo password
-  security.sudo = {
+  security = {
+    rtkit = {
+      enable = true;
+      };
+    sudo = {
     extraConfig = ''
       Defaults pwfeedback
       Defaults insults
       '';
+    };
   };
-
-  # Electron Wayland
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    LILIPOD_HOME="/home/${username}/db";
-  };
-
-  networking.nftables.enable = true;
-
-  # Host Name
-  networking.hostName = hostname; # Hostname
 
   # Time Zone
   time.timeZone = timezone; # Timezone
 
   # Network
   networking = {
+    hostId = "88888888"; # Machine ID
+    hostName = hostname; # HostName
+    nftables = {
+      enable = true;
+      };
     nameservers = [
-      "1.1.1.1"
-      "9.9.9.9"
+      "1.1.1.1"  # CloudFlare | Primary
+      "9.9.9.9"  # Quad9      | Secondary
       ];
     enableIPv6 = true;
     firewall = {
@@ -107,8 +120,6 @@
       };
     };
 
-  security.rtkit.enable = true;
-
  # QT
   qt = {
     enable = true;
@@ -118,6 +129,7 @@
 
  # Locales
    i18n = {
+     defaultCharset = "UTF-8";
      defaultLocale = "en_US.UTF-8";
      inputMethod.enable = false;
      };
@@ -175,7 +187,7 @@
       automatic = true;
         };
     settings = {
-      trusted-substituters = [
+      substituters = [
         "https://cache.nixos.org"                   # NixPKGs
         "https://nix-community.cachix.org"          # NixCommunity
         "https://afnix-hydra.s3-bulk-web.afnix.fr"  # LixPM
@@ -194,6 +206,8 @@
       cores = 4;
       max-jobs = 4;
       sandbox = true;
+      require-sigs = true;
+      allowed-users = [ "root" "@wheel" ];
       trusted-users = [ "root" "@wheel" ];
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
