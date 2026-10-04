@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, ... }:
+{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, storage, ... }:
 
 {
 
@@ -10,15 +10,7 @@
     "/ZIN" = {
       device = "/dev/disk/by-uuid/11111111-7469-7469-7469-111111111111";
       fsType = "btrfs";
-      options = [ "ssd" "rw" "exec" "acl" "noatime" "discard=async" "noautodefrag" "noflushoncommit" "space_cache=v2" "compress=zstd:3" "thread_pool=4" "commit=60" ];
-      };
-
- ## Home
-    "/home" = {
-      device = "/ZIN/Linux/Home/Nix";
-      fsType = "none";
-      options = [ "bind" ];
-      depends = [ "/ZIN" ];
+      options = [ "ssd" "rw" "exec" "acl" "noatime" "discard=async" "noautodefrag" "noflushoncommit" "space_cache=v2" "compress=zstd:3" "thread_pool=3" "commit=60" ];
       };
 
  ## Flatpak
@@ -41,26 +33,30 @@
 
  ## Root | /dev/sda2 | /
     "/" = {
-      device = "/dev/disk/by-uuid/22222222-7469-7469-7469-222222222222";
-      fsType = "btrfs";
-      options = [ "ssd" "rw" "exec" "acl" "noatime" "discard=async" "noautodefrag" "noflushoncommit" "space_cache=v2" "compress=zstd:3" "thread_pool=4" "commit=60" ];
+      device = storage.uuid.root;
+      fsType = storage.fs.root;
+      options = [ "ssd" "rw" "exec" "acl" "noatime" "discard=async" "noautodefrag" "noflushoncommit" "space_cache=v2" "compress=zstd:3" "thread_pool=3" "commit=60" ];
       };
-## Temporary
+
+ ## Boot | /dev/sda3 | /boot
+    "/boot" = {
+      device = storage.uuid.boot;
+      fsType = storage.fs.boot;
+      options = [ "rw" "noatime" "umask=0022" "shortname=mixed" "utf8" ];
+      };
+
+ ## Home
+    "/home" = {
+      device = storage.uuid.home;
+      fsType = storage.fs.home;
+      options = [ "bind" ];
+      depends = [ "/ZIN" ];
+      };
+
+## Temporary | You do NOT have to bother with these, as long as you have a decent amount of RAM.
 
   # /tmp
     "/tmp" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      };
-
-  # /var/cache
-    "/var/cache" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      };
-
-  # /var/log
-    "/var/log" = {
       device = "tmpfs";
       fsType = "tmpfs";
       };
@@ -71,11 +67,16 @@
       fsType = "tmpfs";
       };
 
- ## Boot | /dev/sda3 | /boot
-    "/boot" = {
-      device = "/dev/disk/by-uuid/3333-7469";
-      fsType = "vfat";
-      options = [ "rw" "noatime" "umask=0022" "shortname=mixed" "utf8" ];
+  # /var/log
+    "/var/log" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      };
+
+  # /var/cache
+    "/var/cache" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
       };
 
 ### HDD
