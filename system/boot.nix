@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, ... }:
+{ config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, storage, ... }:
 
 {
 
@@ -16,6 +16,9 @@
       "/lib/firmware/edid/HDMI-A-1".source = ../edid/HDMI-A-1;
       };
     };
+    kernel = {
+      enable = true;
+      };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-intel" "kvm-amd" "ntsync" ];
     kernelParams = [ "quiet" "splash" "nosgx" "clocksource=tsc" "tsc=reliable" "random.trust_cpu=on" "split_lock_detect=off" "nowatchdog" "apparmor=0" "selinux=0" "audit=0" "intel_iommu=on" "amd_iommu=on" "iommu=pt" "tsx=on" "mitigations=off" "drm.edid_firmware=DP-3:edid/DP-3,HDMI-A-1:edid/HDMI-A-1" ];
@@ -52,11 +55,12 @@
   # Playmouth
     plymouth = {
       enable = true;
-      themePackages = with pkgs; [(
-        adi1090x-plymouth-themes.override {
-          selected_themes = [ "lone" ];
-        })];
-      theme = "lone";
+      theme = "catppuccin-mocha";
+      themePackages = with pkgs; [
+        (catppuccin-plymouth.override {
+          variant = "mocha";
+          })
+        ];
       };
     loader = {
       timeout = 3;
@@ -98,10 +102,9 @@
         gfxpayloadEfi = "keep";
         gfxmodeEfi = "2560x1440x32";
         splashMode = "normal";
-        theme = (pkgs.sleek-grub-theme.override {
-        withBanner = "Hi Feral,";
-        withStyle = "bigSur";
-        });
+        theme = (pkgs.catppuccin-grub.override {
+          flavor = "mocha";
+          });
         extraEntries = ''
 
           menuentry "Arch" --class arch {
