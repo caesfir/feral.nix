@@ -4,7 +4,7 @@ Just a backup of my NixOS configs.
 Feel free to use them; however, keep in mind that you may need to make some changes based on your own configuration. Here are some of the most important configurations to consider:
 - Meant to target Nvidia 16xx-series and above GPUs. You might want to consider removing some configs and editing others if you use AMD, Intel, or an **End-Of-Life** Nvidia GPU.
 - Many security measures which are normally enabled by default have been force-disabled to prioritize raw performance over security.
-- Uses [**Lix**](https://lix.systems) instead of [**Nix**](https://nixos.org) as the package manager.
+- Uses [**Lix**](https://lix.systems) instead of [**Nix**](https://nixos.org) as the **Package Manager**.
 - Uses the Linux Zen Kernel.
 - nix-ld is used to make some FHS applications run normally(-ish).
 - [**Plasma**](https://kde.org/plasma-desktop), [**GNOME**](https://www.gnome.org), [**COSMIC**](https://system76.com/cosmic), and [**Hyprland**](https://hypr.land) are all enabled by default.
