@@ -2,15 +2,15 @@
 
 {
 
-# Hardware
   hardware = {
-  # Firmware
-    enableRedistributableFirmware = true;
+
   # Bluetooth
     bluetooth.enable = true;
   # Steam Hardware
     steam-hardware.enable = lib.mkForce false;
   # Firmware
+    enableRedistributableFirmware = true;
+    firmwareCompression = "zstd";
     firmware = [
      # EDID
       (pkgs.runCommand "edid" {} ''
@@ -24,13 +24,12 @@
       cp ${../fw/hda-jack-retask.fw} $out/lib/firmware/hda-jack-retask.fw
       '')
     ];
-    firmwareCompression = "zstd";
   # Graphics
     graphics = {
       enable = true;
       };
 
-  # CPU
+### CPU MicroCode
     cpu = {
       amd = {
         updateMicrocode = true;
@@ -40,14 +39,15 @@
         };
       };
 
-  # Nvidia
+### NVIDIA
+  # Container
     nvidia-container-toolkit = {
       enable = true;
       mount-nvidia-executables = true;
       device-name-strategy = "index";
       discovery-mode = "nvml";
       };
-
+  # Driver
     nvidia = {
       open = true;
       nvidiaPersistenced = true;
@@ -57,13 +57,13 @@
       gsp.enable = true;
       modesetting.enable = true;
       dynamicBoost.enable = true;
-    # Power Management
       powerManagement = {
         enable = true;
         finegrained = false;
         kernelSuspendNotifier = true;
       };
     };
+
   };
 
 }

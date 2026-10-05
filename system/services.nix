@@ -25,13 +25,7 @@
   # UPower
     upower.enable = true;
   # envfs
-    envfs = {
-      enable = true;
-    };
-  # aria2
-#     aria2 = {
-#       enable = true;
-#     };
+    envfs.enable = true;
   # fwupd
     fwupd = {
       enable = true;
@@ -63,14 +57,10 @@
         enable = true;
         xwayland.enable = true;
       };
-    # KDE Plasma
-      plasma6 = {
-        enable = true;
-      };
+    # Plasma
+      plasma6.enable = true;
     # GNOME
-      gnome = {
-        enable = true;
-      };
+      gnome.enable = true;
     };
   # Display Manager
     displayManager = {
@@ -78,6 +68,7 @@
     # Plasma Login Manager
       plasma-login-manager.enable = true;
     };
+
   };
 
 }

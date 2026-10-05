@@ -37,12 +37,12 @@
         steamcmd
         kitty
     ## File Systems
-        btrfs-progs                     # BTRFS
-        e2fsprogs                       # EXT4
-        ntfsprogs-plus                  # NTFS
-        exfatprogs                      # EXFAT
-        dosfstools                      # FAT32
-        mtools                          # FAT32
+        btrfs-progs    # BTRFS
+        e2fsprogs      # EXT4
+        ntfsprogs-plus # NTFS
+        exfatprogs     # EXFAT
+        dosfstools     # FAT32
+        mtools         # FAT32
     ## Steamy
         jq
         gnutar
