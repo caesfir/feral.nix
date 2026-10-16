@@ -85,6 +85,16 @@
       url = "github:nix-community/nix-ld";
       inputs.nixpkgs.follows = "nixpkgs";
       };
+   # Nix-Index
+    nix-index = {
+      url = "github:nix-community/nix-index";
+      inputs.nixpkgs.follows = "nixpkgs";
+      };
+   # Nix Index Database
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+      };
    # Stylix
     stylix = {
       url = "github:nix-community/stylix";
@@ -125,8 +135,8 @@
           timezone = "Asia/Kolkata";
           storage = {
             uuid = {
-              root = "/dev/disk/by-uuid/22222222-7469-7469-7469-222222222222"; # UUID of Root | /
-              boot = "/dev/disk/by-uuid/3333-7469";                            # UUID of Boot | /boot
+              root = "/dev/disk/by-uuid/33333333-7469-7469-7469-333333333333"; # UUID of Root | /
+              boot = "/dev/disk/by-uuid/5555-7469";                            # UUID of Boot | /boot
               home = "/ZIN/Linux/Home/Nix";                                    # UUID of Home | /home
               };
             fs = {

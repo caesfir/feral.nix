@@ -1,5 +1,7 @@
 { config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, storage, ... }:
 
+### CONTAINER
+
 {
 
   virtualisation = {
@@ -8,13 +10,13 @@
       dockerCompat = true;
       dockerSocket = {
         enable = true;
-        };
+      };
       autoPrune = {
         enable = true;
         dates = "daily";
         flags = [ "--all" ];
-        };
       };
     };
+  };
 
 }

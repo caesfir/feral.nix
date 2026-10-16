@@ -12,7 +12,7 @@
       enableLegacyProfileManagement = false;
       users.${username} = {
         home = {
-          stateVersion = "26.11";
+          stateVersion = "22.11";
           username = username;
           homeDirectory = "/home/${username}";
           };

@@ -53,6 +53,7 @@
         typescript
     ## inputs
         (with inputs; [
+          nix-alien.packages.${stdenv.hostPlatform.system}.nix-alien                     # Nix Alien
           nixos-conf-editor.packages.${stdenv.hostPlatform.system}.nixos-conf-editor     # Nix Editor
           nix-software-center.packages.${stdenv.hostPlatform.system}.nix-software-center # Nix Store
         ])

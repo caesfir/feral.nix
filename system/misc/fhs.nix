@@ -1,5 +1,7 @@
 { config, lib, pkgs, options, modulesPath, inputs, self, username, hostname, system, timezone, storage, ... }:
 
+### FHS binary support
+
 {
 
   programs = {
@@ -22,7 +24,6 @@
           libsodium
           util-linux
           xz
-          systemd
     # Impportant
           mesa
           vulkan-loader
@@ -53,6 +54,10 @@
           gtk3
           pango
           expat
+          gdk-pixbuf
+          systemdLibs
+          cups
+          libpulseaudio
           qt6.qtbase
           qt6.qtdeclarative
           qt6.qtwayland
@@ -68,10 +73,9 @@
           libxcomposite
           libxcb
           libxmu
-    # Discord
-          ];
-        };
+        ];
       };
     };
+  };
 
 }

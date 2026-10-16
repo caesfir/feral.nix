@@ -31,6 +31,7 @@
     stateHome  = "/ZIN/Linux/Home/Nix/Feral/.local/state";
     userDirs = {
       enable = true;
+      setSessionVariables = false;
       createDirectories = true;
       desktop =         "/ZIN/Linux/XDG/Desktop";
       documents =       "/ZIN/Linux/XDG/Documents";

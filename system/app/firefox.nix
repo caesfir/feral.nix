@@ -4,6 +4,7 @@
   programs = {
     firefox = {
       enable = true;
+      policies = lib.mkForce {};
       package = inputs.firefox-nightly.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin;
       languagePacks = [ "en-US" ];
       nativeMessagingHosts.packages = [ pkgs.kdePackages.plasma-browser-integration ];
