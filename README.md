@@ -1,7 +1,7 @@
 # feral.nix
 Just a backup of my NixOS configs.
 
-Feel free to use them; however, keep in mind that you may need to make some changes based on your own configuration. Here are some of the most important configurations to consider:
+Feel free to use them; however, keep in mind that you may need to make some changes based on your own hardware configuration. Here are some of the most important configurations to consider:
 - Meant to target Nvidia 16xx-series and above GPUs. You might want to consider removing some configs and editing others if you use AMD, Intel, or an **End-Of-Life** Nvidia GPU.
 - Many security measures which are normally enabled by default have been force-disabled to prioritize raw performance over security.
 - Uses [**Lix**](https://lix.systems) instead of [**Nix**](https://nixos.org) as the **Package Manager**.
