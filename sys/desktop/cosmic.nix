@@ -16,7 +16,7 @@
   environment = {
     cosmic = {
       excludePackages = with pkgs; [ # Removes bloat packages bundled with COSMIC.
-
+      cosmic-wallpapers
       ];
     };
   };

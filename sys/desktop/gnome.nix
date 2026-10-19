@@ -15,6 +15,7 @@
   environment = {
     gnome = {
       excludePackages = with pkgs; [ # Removes bloat packages bundled with GNOME.
+        gnome-backgrounds
         gnome-tour
         gnome-user-docs
         baobab

@@ -21,3 +21,43 @@ Feel free to use them; however, keep in mind that you may need to make some chan
 | main/ | Main configuration files; imports from `system` and `user`. |
 | system/ | System configuration files. |
 | user/ | User configuration files. |
+
+
+```
+feral.nix/
+├── bob/
+│   ├── edid/
+│   │   ├── DP-3
+│   │   └── HDMI-A-1
+│   ├── fw/
+│   │   └── audio.fw
+├── cre/
+│   └── bob.nix
+│   ├── sys.nix
+│   └── usr.nix
+├── sys/
+│   ├── app/
+│   │   ├── addon.nix
+│   │   ├── envpac.nix
+│   │   ├── firefox.nix
+│   │   └── modpac.nix
+│   ├── conf/
+│   │   ├── 
+│   │   └── 
+│   ├── desktop/
+│   │   ├── cosmic.nix
+│   │   ├── gnome.nix
+│   │   ├── hyprland.nix
+│   │   └── plasma.nix
+│   └── misc/
+│   │   ├── bloat.nix
+│   │   ├── chaotic.nix
+│   │   └── fhs.nix
+├── usr/
+│   ├──
+│   └── xdg.nix
+├── LICENSE
+├── README.md
+├── flake.lock
+└── flake.nix
+```

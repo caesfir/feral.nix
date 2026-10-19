@@ -17,11 +17,11 @@
           homeDirectory = "/home/${username}";
           };
         imports = [
-          ../user/modules.nix
-          ../user/programs.nix
-          ../user/spicetify.nix
-          ../user/variables.nix
-          ../user/xdg.nix
+          ../usr/addon.nix
+          ../usr/env.nix
+          ../usr/modpac.nix
+          ../usr/spicetify.nix
+          ../usr/variables.nix
           ];
         };
       };

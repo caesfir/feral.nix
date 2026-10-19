@@ -6,7 +6,7 @@
 
   programs = {
     nix-ld = {
-      enable = false;
+      enable = false; # Keep it disabled to use flake build.
       dev = {
         enable = true;
         libraries = with pkgs; [

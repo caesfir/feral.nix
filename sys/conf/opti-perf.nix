@@ -5,7 +5,7 @@
 ### Boot
   boot = {
     kernelModules = [ "ntsync" "kvm-intel" "kvm-amd" ];
-    kernelParams = [ "quiet" "splash" "nosgx" "clocksource=tsc" "tsc=reliable" "random.trust_cpu=on" "split_lock_detect=off" "nowatchdog" "apparmor=0" "selinux=0" "audit=0" "intel_iommu=off" "amd_iommu=off" "iommu=off" "tsx=on" "mitigations=off" "drm.edid_firmware=DP-3:edid/DP-3,HDMI-A-1:edid/HDMI-A-1" ];
+    kernelParams = [ "quiet" "splash" "nosgx" "clocksource=tsc" "tsc=reliable" "random.trust_cpu=on" "split_lock_detect=off" "nowatchdog" "apparmor=0" "selinux=0" "audit=0" "intel_iommu=off" "amd_iommu=off" "iommu=off" "tsx=on" "mitigations=off" "drm.edid_firmware=DP-3:edid/DP-3.bin,HDMI-A-1:edid/HDMI-A-1.bin" ];
     initrd = {
       enable = true;
       kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];

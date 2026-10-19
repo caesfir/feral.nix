@@ -21,13 +21,11 @@
   environment = {
     plasma6 = {
       excludePackages = with pkgs.kdePackages; [ # Removes bloat KDE packages bundled with Plasma.
-        baloo
-        milou
         drkonqi
         ocean-sound-theme
         kdeplasma-addons
         kinfocenter
-        kwin-x11
+        plasma-workspace-wallpapers
         elisa
         okular
         khelpcenter

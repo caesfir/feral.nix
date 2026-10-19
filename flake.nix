@@ -147,8 +147,9 @@
             };
           };
         modules = [
-          ./main/system.nix
-          ./main/user.nix
+          ./cre/bob.nix
+          ./cre/sys.nix
+          ./cre/usr.nix
         ];
       };
     };

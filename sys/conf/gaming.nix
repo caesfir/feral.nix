@@ -4,7 +4,7 @@
 
   hardware = {
     steam-hardware = {
-      enable = lib.mkForce true;
+      enable = lib.mkForce false;
     };
   };
 
@@ -46,7 +46,7 @@
       steam = {
       enable = true;
 #       package = pkgs.millennium-steam;
-      extest.enable = lib.mkForce true;
+      extest.enable = lib.mkForce false;
       protontricks.enable = false;
       extraPackages = with pkgs; [
         ];
