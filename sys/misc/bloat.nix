@@ -32,4 +32,29 @@
     jack.alsa.support32Bit      = lib.mkForce false; # Force disable 32bit support | Does NOT affect Steam.
   };
 
+  documentation = {
+    enable = lib.mkForce false; # Force disable documentation.
+
+    dev = {
+      enable = lib.mkForce false;
+    };
+
+    doc = {
+      enable = lib.mkForce false;
+    };
+
+    info = {
+      enable = lib.mkForce false;
+    };
+
+    man = {
+      enable = lib.mkForce false;
+    };
+
+    nixos = {
+      enable = lib.mkForce false;
+    };
+
+  };
+
 }
